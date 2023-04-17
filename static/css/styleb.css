@@ -1408,6 +1408,9 @@ body {
   }
   
   @media (max-width: 767px) {
+    body{
+      font-size: 1rem;
+    }
     #intro .intro-info {
       width: 100%;
     }
@@ -1604,6 +1607,9 @@ textarea{
 }
 
 @media (max-width: 768px){
+  body{
+    font-size: 1rem;
+  }
   .input-group > .form-control{
     width: auto!important;
     margin-bottom: 10px!important;
