@@ -1,6 +1,86 @@
 {% extends "layout.html" %}
-
+{% block head %}
+<style>
+    #mySidenav{
+        position: absolute;
+        right: -135px;
+        transition: 0.3s;
+        padding: 15px;
+        width: 210px;
+        text-decoration: none;
+        font-size: 20px;
+        color: white;
+        border-radius: 20px 0px 0px 20px;
+        top: 30%;
+        background-color: #00b8a3;// #04AA6D;
+        white-space: nowrap
+    }
+    
+    #mySidenav:hover {
+        right: 0;
+    }
+    
+</style>
+{% endblock %}
 {% block body %}
+
+    <div id="mySidenav">
+        <br/>
+        <h4 style="margin-left:55px">Modules</h4>
+        {%set activateone = []%}
+        {% for i in range(topics|length-1) %}
+      
+        <div class="row justify-content-left">
+          <div class="col-sm-8 col-md-6 col-lg-6">
+            {% if idx % topics[i][2] == 0 %}
+            <a href = "/module/{{i}}" class="h4">
+              <button type="button" class="list-button" style="background-color: rgb(89, 177, 89); color:rgb(255,255,255)">
+                <i class="fa-solid fa-check"></i>
+              </button>
+              {{i+1}}
+            </a>
+            </button>
+            {% elif activateone|length == 0 and idx > 0 %}
+            {% set temp = activateone.append(TRUE) %}
+            <a href = "/module/{{i}}" class="h4">
+              <button type="button" class="list-button" style="background-color: rgb(0 0 126); color:rgb(255,255,255)">
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+              {{i+1}}
+            </a>
+            {% else %}
+            
+            <button type="button" class="list-button" style="background-color: rgb(26, 26, 26); color:rgb(255,255,255)" disabled>
+              <i class="fa fa-lock"></i>
+            </button>
+            <h4 style="display: inline-block;">{{i+1}}</h4>
+            
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+        
+        <div class="row justify-content-left">
+          <div class="col-sm-8 col-md-6 col-lg-6">
+            {% if idx % 39270 == 0 %}
+            <a href = "/static/files/Appendices.pdf" target=”_blank” class="h4">
+              <button type="button" class="list-button" style="background-color: rgb(89, 177, 89); color:rgb(255,255,255)">
+                <i class="fa-solid fa-check"></i>
+              </button>
+              {{topics[-1][0]}}
+            </a>
+            </button>
+            {% else %}
+            <button type="button" class="list-button" style="background-color: rgb(26, 26, 26); color:rgb(255,255,255)" disabled>
+              <i class="fa fa-lock"></i>
+            </button>
+            <h4 style="display: inline-block;">{{topics[-1][0]}}</h4>
+            {% endif %}
+          </div>
+        </div>
+    </div>
+
+
 <div class="row justify-content-center">
     <h2>
         {{title}}

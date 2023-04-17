@@ -15,6 +15,7 @@ body {
     font-size:1.2rem!important;
     color: #1c1d1d;
     font-family: "Montserrat", Sans-serif, sans-serif;
+    overflow-x: hidden;
   }
   
   a {
@@ -1369,6 +1370,9 @@ body {
   }
   
   @media (max-width: 991px) {
+    #mySidenav{
+      display:none;
+    }
     #header {
       height: 60px;
       padding: 10px 0;

@@ -38,7 +38,15 @@ def module(id = 0):
     id = int(id)
     code = MODULES[id][1]
     title = MODULES[id][0]
-    return render_template("typeformTemplate.html",code = code, email = current_user.email, name=current_user.name, id = id, title = title)
+    return render_template(
+        "typeformTemplate.html",
+        code = code, 
+        email = current_user.email, 
+        name=current_user.name, 
+        id = id, 
+        title = title, 
+        topics = MODULES, 
+        idx = current_user.lessonCount)
 
 
 @pages.route('/completed/<id>')
