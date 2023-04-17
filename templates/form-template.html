@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <br/>
+<section>
+  {{formhtml |safe}}
+</section>
+  
+  
+<section>
+  <div class="container">
+    <!-- This is the loading animation -->
+  <div class="row loadingcenter noload justify-content-center" id = "theLoadingAnimation">
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+  </div>
+  <!-- Loading animation end -->
+  </div>
+  <div class="container" id="theQuery">
+  </div>
+  <div class="container" id="theOutputsList">
+    
+    
+  </div>
+</section>
+<br/>
+
+
+
+{% endblock %}
+
+
+{%block footer %} 
+<script src="/static/js/main.js"></script>
+<script src="https://kit.fontawesome.com/1f83ce0f47.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+
+

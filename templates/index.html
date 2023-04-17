@@ -1,0 +1,113 @@
+{% extends "layout.html" %}
+{% block body %}
+<section>
+  {% if current_user.is_authenticated %}
+    <div class="row justify-content-center">
+      <div class="btn-group" role="group" aria-label="Logging">
+        <a href = "/logout"class = "h4">
+        <button type="button" class="btn btn-secondary index-button index-button h-100">Log Out</button>
+        </a>
+      </div>
+    </div>
+  {% else %}
+  <div class="row justify-content-center">
+    <div class="btn-group" role="group" aria-label="Logging">
+      <a href = "/login"class = "h4">
+      <button type="button" class="btn btn-secondary index-button index-button-left h-100">Log In</button>
+      </a>
+      <a href = "/signup"class = "h4">
+      <button type="button" class="btn btn-secondary index-button index-button-right h-100">Sign Up</button>
+      </a>
+    </div>
+    
+  </div>
+  
+  <div class="row justify-content-center"><h2>Login to get started with the module</h2></div>
+  
+  {% endif %}
+</section>
+<div style = "background-image: linear-gradient(to right, white, #00b5a3 , white);;width:100%; height:8px" class="col-sm-9 col-md-6 m-auto"></div>
+<section>
+  <div class = "row justify-content-center">
+    <div class="col-sm-9 col-md-6">
+      <p class="text-justify">
+        The purpose of this resource is to provide users with the necessary knowledge and tools to effectively utilize social media to prevent and counter violent extremism (P/CVE). 
+  <br/>
+  With the growing influence of social media in shaping public opinion, this guide emphasizes the importance of harnessing its power to challenge extremist ideologies and promote positive change. 
+  <br/>
+  This e-manual is structured step-by-step, guiding you through designing, implementing, and evaluating social media campaigns tailored to address specific P/CVE goals. 
+      </p>
+      <p class="text-justify">
+        The E-Manual begins with an introduction to the significance of social media in P/CVE, and presents two guiding principles: "Do No Harm" and "Challenge not Change."
+<br/>
+The following sections outline the steps to develop a successful P/CVE campaign:
+<dl class="row">
+  <dt class="col-sm-3">Concept development</dt>
+  <dd class="col-sm-9">
+    <p>Determine the campaign goal, identify the target audience, select the most appropriate platform, and create a campaign concept.
+    </p>
+  </dd>
+  <dt class="col-sm-3">Messaging</dt>
+  <dd class="col-sm-9">
+    <p>Choose the campaign style, select appropriate messengers, ensure their safety, and design the campaign's substance.
+    </p>
+  </dd>
+  <dt class="col-sm-3">Dissemination</dt>
+  <dd class="col-sm-9">
+    <p>Develop a comprehensive dissemination approach to reach the target audience effectively.
+    </p>
+  </dd>
+  <dt class="col-sm-3">Community building</dt>
+  <dd class="col-sm-9">
+    <p>Foster an online community that supports the campaign and encourages positive engagement.
+    </p>
+  </dd>
+</dl> 
+    Multiple-choice questions and activities are provided throughout each section to help you apply the concepts to your campaigns. 
+
+    This e-manual also concludes with a list of resources, including a glossary, case studies, social media platform descriptions, and helpful references to assist practitioners in their P/CVE efforts.
+    <br/>
+    By following the guidance and recommendations provided in this e-manual, community practitioners will be better equipped to create impactful social media campaigns that challenge extremist narratives and promote peace and tolerance.
+      </p>
+    </div>
+    
+  </div>
+</section>
+<div style = "background-image: linear-gradient(to right, white, #00b5a3 , white);;width:100%; height:8px" class="col-sm-9 col-md-6 m-auto"></div>
+<section>
+  <br/>
+  
+  {%set activateone = []%}
+  {% for i in range(topics|length) %}
+
+  <div class="row justify-content-left">
+    <div class="col-sm-8 col-md-6 col-lg-6 mx-auto">
+      {% if idx % topics[i][2] == 0 %}
+      <a href = "/module/{{i}}" class="h4">
+        <button type="button" class="list-button" style="background-color: rgb(89, 177, 89); color:rgb(255,255,255)">
+          <i class="fa-solid fa-check"></i>
+        </button>
+        {{topics[i][0]}}
+      </a>
+      </button>
+      {% elif activateone|length == 0 and idx > 0 %}
+      {% set temp = activateone.append(TRUE) %}
+      <a href = "/module/{{i}}" class="h4">
+        <button type="button" class="list-button" style="background-color: rgb(0 0 126); color:rgb(255,255,255)">
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+        {{topics[i][0]}}
+      </a>
+      {% else %}
+      
+      <button type="button" class="list-button" style="background-color: rgb(26, 26, 26); color:rgb(255,255,255)" disabled>
+        <i class="fa fa-lock"></i>
+      </button>
+      <h4 style="display: inline-block;">{{topics[i][0]}}</h4>
+      
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</section>
+{% endblock %}

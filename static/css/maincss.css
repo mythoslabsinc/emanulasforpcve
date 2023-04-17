@@ -1,0 +1,230 @@
+.container{
+    margin-bottom: 20px;
+}
+.btn-search{
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 32px !important;
+  border-radius: 2rem!important;
+  transition: 0.5s;
+  margin: 0!important;
+  height: auto!important;
+  color: #000;
+}
+
+.selectbox{
+  height: auto;
+  border-radius: 2rem !important;
+  padding: 0px 32px !important;
+  font-weight: 600;
+}
+
+::placeholder {
+    color: geay!important;
+    opacity: 1!important; /* Firefox */
+  }
+  
+.btn-submit{
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 32px !important;
+  border-radius: 50px!important;
+  transition: 0.5s;
+  margin: 0!important;
+  color: #1c1d1d!important;
+  background-color: #00ad9f;
+  border: 0px solid #006e65 !important;
+}
+
+.btn-submit:hover{
+    background-color: #006e65;
+}
+
+.btn-submit:focus{
+    border:0px solid #006e65!important;
+    box-shadow: 0px 0px 0px #006e65!important;
+}
+
+.btn-submit:not(:disabled):not(.disabled):active, .btn-submit:not(:disabled):not(.disabled).active, .show > .btn-submit.dropdown-toggle{
+    background-color: #006e65!important;
+    border:0px solid #006e65!important;
+}
+
+.out-block{
+    background-color: white;
+    border-radius: 20px;
+    box-shadow:0 0 10px 2px rgba(0,0,0,0.5);
+}
+
+.out-card{
+    color: black!important;
+    font-family: roboto !important;
+    font-size: 1.3em!important;
+    padding: 5px 45px !important;
+    border-radius:0px !important;
+}
+
+.img-top-card{
+    border-radius:20px 20px 0px 0px !important;
+}
+
+.noload{
+    display: none;
+}
+
+.row{
+    margin-bottom: 20px;
+}
+
+/* bodY {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  } */
+  .loading {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+  }
+  .wave {
+    width: 9px;
+    height: 20px;
+    background: linear-gradient(45deg, cyan, #fff);
+    margin: 10px;
+    animation: wave 1s linear infinite;
+    border-radius: 20px;
+  }
+  .wave:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+  .wave:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+  .wave:nth-child(4) {
+    animation-delay: 0.3s;
+  }
+  .wave:nth-child(5) {
+    animation-delay: 0.4s;
+  }
+  .wave:nth-child(6) {
+    animation-delay: 0.5s;
+  }
+  .wave:nth-child(7) {
+    animation-delay: 0.6s;
+  }
+  .wave:nth-child(8) {
+    animation-delay: 0.7s;
+  }
+  .wave:nth-child(9) {
+    animation-delay: 0.8s;
+  }
+  .wave:nth-child(10) {
+    animation-delay: 0.9s;
+  }
+  
+  @keyframes wave {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  
+.chatblock{
+  position: fixed;
+  width: 100%;
+  padding-top: 10px;
+  background-color: #1c1d1d;
+  bottom: 0;
+}
+
+.fullw{
+  width: 100%;
+}
+.chatcover{
+  justify-content: space-between;
+}
+
+.btn-submit-chat{
+  line-height: 0px;
+  margin-left:20px!important;
+}
+
+.chat-right{
+  float: right;
+  background-color: #035d2c;
+}
+
+.chat-left{
+  float: left;
+  background-color: #016d64;
+}
+
+.chat{
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 20px;
+  flex-direction: column;
+}
+
+.chat-box-right{
+  align-items: flex-end;
+  text-align:right;
+}
+
+.chat-box-left{
+  align-items: flex-start;
+}
+
+.chat-speaker{
+  padding:0px;
+}
+
+.index-button{
+  background-color: #00ad9f;
+  padding: 10px!important;
+  color: #1c1d1d!important;
+  border-radius: 200px;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+.index-button:hover{
+  background-color: #006e65;
+  color: #1c1d1d!important;
+}
+.index-button > a:hover, .index-button > a:active, .index-button > a:visited, .index-button > a:focus{
+  color: #1c1d1d!important;
+}
+
+.index-button-left{
+  border-radius: 200px 0px 0px 200px;
+}
+.index-button-right{
+  border-radius: 0px 200px 200px 0px;
+}
+
+
+span[contenteditable]:empty::before {
+  content: attr(data-placeholder);
+  opacity: 0.6;
+}
+span[contenteditable]:empty:focus::before {
+  content: attr(data-placeholder);
+}
+
+/* section{
+  width:60%;
+  margin-left:20%;
+  margin-right:20%;
+} */

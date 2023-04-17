@@ -1,0 +1,125 @@
+{% extends "layout.html" %}
+{% block body %}
+
+{% if parameters['step'] == "otp-verify" %}
+<section>
+    <div class="row justify-content-center">
+        <div class="btn-group" role="group" aria-label="Logging">
+            <span type="text" class="h4" >Sign Up</span>
+        </div>
+    </div>
+    <form method="POST" action="/otp-verify/">
+        <div class = "error">
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              {{ messages[0] }}
+            {% endif %}
+          {% endwith %}
+        </div>
+        <p> We have sent you an email containing an OTP. 
+        Please enter your OTP to verify that this email belongs to you. 
+        If you didn't receive the email try checking the spam folder. </p>
+        <div class="container d-flex justify-content-center">
+            <div class="input-group col-sm-9 input-group-lg">
+            <input type="email" class="form-control btn-search" name="email" id="email" value="{{parameters['email']}}" required readonly style="margin-right:8px!important">
+            </div>
+        </div>
+        <div class="container d-flex justify-content-center">
+            <div class="input-group col-sm-9 input-group-lg">
+            <input type="text" class="form-control btn-search" name="otp" id="otp" autofocus=""  style="margin-right:8px!important" required>
+            </div>
+        </div>
+        <div class="container justify-content-center" style="display:flex">
+            <div class="col-sm-3">
+                <button class="btn btn-lg btn-primary btn-block text-uppercase btn-submit" type="submit">Verify OTP</button>
+            </div>
+        </div>
+    </form>
+</section>
+ 
+{% elif parameters['step'] == "email-verify" %}
+<br/>
+<section>
+    <div class="row justify-content-center">
+        <div class="btn-group" role="group" aria-label="Logging">
+            <span type="text" class="h4" >Sign Up</span>
+        </div>
+    </div>
+    <form method="POST" action="/email-verify/">
+        <div class = "error">
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              {{ messages[0] }}
+            {% endif %}
+          {% endwith %}
+        </div>
+        <div class="container d-flex justify-content-center">
+            <div class="input-group col-sm-9 input-group-lg">
+            <input type="email" class="form-control btn-search" name="email" id="email" placeholder="Your Email" required style="margin-right:8px!important">
+            </div>
+        </div>
+        <div class="container justify-content-center" style="display:flex">
+            <div class="col-sm-3 text-center">
+                <button class="btn btn-lg btn-primary btn-block text-uppercase btn-submit" type="submit">Send OTP</button>
+            </div>
+        </div>
+        <div class="container justify-content-center" style="display:flex">
+            <div class="col-sm-4 text-center">
+                <button class="btn btn-lg btn-primary text-uppercase btn-submit">Reset Password</button>
+            </div>
+        </div>
+    </form>
+</section>
+
+{% elif parameters['step'] == 'register'%}
+<br/>
+<section>
+    <div class="row justify-content-center">
+        <div class="btn-group" role="group" aria-label="Logging">
+            <span type="text" class="h4" >Sign Up</span>
+        </div>
+    </div>
+    <form method="POST" action="/register/{{parameters['code']}}">
+        <div class = "error">
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              {{ messages[0] }}
+            {% endif %}
+          {% endwith %}
+        </div>
+        <div class="container d-flex justify-content-center">
+            <div class="input-group col-sm-9 input-group-lg">
+            <input type="email" class="form-control btn-search" name="email" id="email" value="{{parameters['email']}}" placeholder="Your Email" required readonly style="margin-right:8px!important">
+            </div>
+        </div>
+        <div class="container d-flex justify-content-center">
+            <div class="input-group col-sm-9 input-group-lg">
+            <input type="text" class="form-control btn-search" name="name" id="name" placeholder="Your Name" required style="margin-right:8px!important">
+            </div>
+        </div>
+        <div class="container d-flex justify-content-center">
+            <div class="input-group col-sm-9 input-group-lg">
+            <input type="password" class="form-control btn-search" name="pswd1" id="inputPassword" placeholder="Your Password" style="margin-right:8px!important" required>
+            </div>
+        </div>
+            <div class="container d-flex justify-content-center">
+            <div class="input-group col-sm-9 input-group-lg">
+            <input type="password" class="form-control btn-search" name="pswd2" id="inputPassword2" placeholder="Confirm Password" style="margin-right:8px!important" required>
+            </div>
+        </div>                                                                                                                              
+        <div class="container justify-content-center" style="display:flex">
+            <div class="col-sm-3">
+                <button class="btn btn-lg btn-primary btn-block text-uppercase btn-submit" type="submit">Sign Up</button>
+            </div>
+        </div>
+    </form>
+</section>
+
+{% else %}
+
+"An invalid parameter was received"
+<h1>{{parameters['step']}}</h1>
+<h1>{{parameters['email']}}</h1>
+
+{% endif %}
+{% endblock %}

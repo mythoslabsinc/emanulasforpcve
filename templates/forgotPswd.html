@@ -1,0 +1,152 @@
+{% extends "layout.html" %}
+{% block body %}
+
+ <br/>
+ <section>
+  <div class="row justify-content-center">
+    <div class="btn-group" role="group" >
+      {% if parameters['step'] == "email-verify"%}
+      <span type="text" class="h4" ><b>Reset Password</b></span> </div> </div>
+      <form method="POST" action="/reset-password/email-verify">
+      {% elif parameters['step'] == "otp-verify" %}
+      <span type="text" class="h4" ><b>Verification Code</b></span> </div> </div>
+      <div class="row justify-content-center">
+        <div class="btn-group" role="group" aria-label="Logging">
+          <span type="text" class="h4" >Please enter the Verification Code received on {{parameters["email"]}}</span>
+        </div>
+      </div>
+      <form method="POST" action="/reset-password/otp-verify">
+      {% elif parameters['step'] == "password-set" %}
+      <span type="text" class="h4" ><b>Set New Password</b></span> </div> </div>
+      <form method="POST" action="/reset-password/password-set&{{parameters['email']}}&{{parameters['code']}}">
+      {% endif%}
+      
+      <div class = "error">
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+                  {{ messages[0] }}
+          {% endif %}
+        {% endwith %}
+        </div>
+        {% if parameters['step'] == "email-verify" %}
+        <div class="container d-flex justify-content-center">
+        <div class="input-group col-sm-9 input-group-lg">
+        <input type="email" class="form-control btn-search" name="email" id="email" placeholder="Your Email" autofocus="" style="margin-right:8px!important">
+        </div>
+        </div>
+        <div class="container justify-content-center" style="display:flex">
+          <div class="col-sm-3">
+              <button class="btn btn-lg btn-primary btn-block text-uppercase btn-submit" type="submit">Proceed</button>
+          </div>
+        {% elif parameters['step'] == "otp-verify" %}
+        <div class="form-label-group">
+          <div class="container d-flex justify-content-center">
+            <div class="input-group col-sm-9 input-group-lg">
+            <input type="email" class="form-control btn-search" name="email" id="email" placeholder="Your Email" style="margin-right:8px!important" value = "{{parameters['email']}}"  required readonly hidden>
+            </div>
+            </div>
+            <div class="container d-flex justify-content-center">
+              <div class="input-group col-sm-9 input-group-lg">
+              <input type="number" class="form-control btn-search" name="otp" id="otp" placeholder="Verification Code" autofocus="" style="margin-right:8px!important">
+              </div>
+              </div>
+        </div>
+        <div class="container justify-content-center" style="display:flex">
+          <div class="col-sm-3">
+              <button class="btn btn-lg btn-primary btn-block text-uppercase btn-submit" type="submit">Proceed</button>
+          </div>
+        {% elif parameters['step'] == "password-set" %}
+        <div class="form-label-group">
+          <div class="container d-flex justify-content-center">
+            <div class="input-group col-sm-9 input-group-lg">
+            <input type="email" class="form-control btn-search" name="email" id="email" placeholder="Your Email" style="margin-right:8px!important" value = "{{parameters['email']}}"  required readonly hidden>
+            </div>
+            </div>
+          <div class="container d-flex justify-content-center">
+            <div class="input-group col-sm-9 input-group-lg">
+            <input type="password" class="form-control btn-search" name="pswd1" id="inputPassword" placeholder="Your Password" style="margin-right:8px!important" required>
+            </div>
+            </div>
+            <div class="container d-flex justify-content-center">
+              <div class="input-group col-sm-9 input-group-lg">
+              <input type="password" class="form-control btn-search" name="pswd2" id="inputPassword2" placeholder="Confirm Password" style="margin-right:8px!important" required>
+              </div>
+              </div>
+
+              <div class="container justify-content-center" style="display:flex">
+                <div class="col-sm-3">
+                    <button class="btn btn-lg btn-primary btn-block text-uppercase btn-submit" type="submit">Change Password</button>
+                </div>
+                {% endif %}
+
+      </form>
+  </div>
+ </section>
+ 
+<!--  
+<section>
+  <br/>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            {% if parameters['step'] == "email-verify"%}
+            <h5 class="card-title text-center">Reset Password</h5>
+            <form method="POST" action="/reset-password/email-verify">
+            {% elif parameters['step'] == "otp-verify" %}
+            <h5 class="card-title text-center">Verify OTP</h5>
+            <form method="POST" action="/reset-password/otp-verify">
+            {% elif parameters['step'] == "password-set" %}
+            <h5 class="card-title text-center">Set new Password</h5>
+            <form method="POST" action="/reset-password/password-set&{{parameters['email']}}&{{parameters['code']}}">
+            {% endif%}
+
+
+            
+        <div class = "error">
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+                  {{ messages[0] }}
+          {% endif %}
+        {% endwith %}
+        </div>
+              {% if parameters['step'] == "email-verify" %}
+              <div class="form-label-group">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your E-mail" autofocus="" required  >
+                <label for="email">Your E-mail</label>
+              </div>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Proceed</button>
+              {% elif parameters['step'] == "otp-verify" %}
+              <div class="form-label-group">
+                <input type="email" class="form-control" name="email" id="email" value = {{parameters['email']}}  required readonly hidden >
+                <input type="number" class="form-control" name="otp" id="otp" placeholder="Your OTP" autofocus="" required  >
+                <label for="otp">OTP received on {{parameters['email']}} </label>
+              </div>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Proceed</button>
+              {% elif parameters['step'] == "password-set" %}
+              <div class="form-label-group">
+                <input type="email" class="form-control" name="email" id="email" value = {{parameters['email']}}  required readonly hidden >
+                <input type="password" id="inputPassword" name="pswd1" class="form-control" placeholder="Your Password" required>
+                <label for="inputPassword">Your Password</label>
+              </div>
+              <div class="form-label-group">
+                <input type="password" id="inputPassword2" name="pswd2" class="form-control" placeholder="Confirm Password" required>
+                <label for="inputPassword2">Confirm Password</label>
+              </div>
+
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Change Password</button>
+              {% endif %}
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- </script> -->
+
+{% endblock %}

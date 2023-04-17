@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% block body %}
+
+    <br/>
+{% if current_user.is_authenticated %}
+<br/>
+<br/>
+<br/>
+<div class="row justify-content-center">
+  <div class="col-sm-8 col-md-6 col-lg-4 mx-auto">
+        <a href = "/home"class = "h4">
+          <button type="button" class="btn btn-secondary index-button w-100 ">
+            You are alredy logged in , go back to Home !
+          </button>
+        </a>
+  </div>
+</div>
+<br/>
+<br/>
+
+{% else %}
+
+<section>
+  <div class="row justify-content-center">
+    <div class="btn-group" role="group" aria-label="Logging">
+      <span type="text" class="h4" >Log In</span>
+    </div>
+  </div>
+  <form method="POST" action="/login">
+    <div class = "error">
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+
+              {{ messages[0] }}
+
+      {% endif %}
+      {% endwith %}
+  </div>
+  
+    <div class="container d-flex justify-content-center">
+      <div class="input-group col-sm-9 input-group-lg">
+      <input type="email" class="form-control btn-search" name="email" id="email" placeholder="Your Email" autofocus="" style="margin-right:8px!important">
+      </div>
+    </div>
+    <div class="container d-flex justify-content-center">
+      <div class="input-group col-sm-9 input-group-lg">
+      <input type="password" class="form-control btn-search" name="password" id="inputPassword" placeholder="Your Password" style="margin-right:8px!important" required>
+      </div>
+    </div>
+    <div class="container d-flex justify-content-center">
+      <div class="input-group col-sm-9 input-group-lg">
+      <input type="checkbox" class="form-check-input" name="remember" id="customCheck1" style="margin-right:8px!important" >
+      <label class="form-check-label" for="customCheck1">Remember me</label>
+      </div>
+    </div>
+    <div class="container justify-content-center" style="display:flex">
+      <div class="col-sm-3">
+          <button class="btn btn-lg btn-primary btn-block text-uppercase btn-submit" type="submit">Log In</button>
+      </div>
+    </div>
+  </form>
+</section>
+
+{% endif %}
+
+
+{% endblock %}
+
+
+
+
