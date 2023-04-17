@@ -47,6 +47,6 @@ def complete(id):
     id = int(id)
     # Mail.sendCertificate(current_user.email, current_user.name)
     Database.increaseLessonCount(current_user.id, MODULES[id][2])
-    if id < len(MODULES):
+    if id < (len(MODULES)-2): # 5 < 6
         return redirect(url_for("pages.module", id = id+1))
-    return redirect(url_for("pages.home"))
+    return redirect(url_for('static/files', filename='Appendices.pdf'))

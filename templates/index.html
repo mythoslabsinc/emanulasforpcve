@@ -32,14 +32,12 @@
     <div class="col-sm-9 col-md-6">
       <p class="text-justify">
         The purpose of this resource is to provide users with the necessary knowledge and tools to effectively utilize social media to prevent and counter violent extremism (P/CVE). 
-  <br/>
-  With the growing influence of social media in shaping public opinion, this guide emphasizes the importance of harnessing its power to challenge extremist ideologies and promote positive change. 
-  <br/>
+  <br/><br/>
   This e-manual is structured step-by-step, guiding you through designing, implementing, and evaluating social media campaigns tailored to address specific P/CVE goals. 
       </p>
       <p class="text-justify">
         The E-Manual begins with an introduction to the significance of social media in P/CVE, and presents two guiding principles: "Do No Harm" and "Challenge not Change."
-<br/>
+<br/><br/>
 The following sections outline the steps to develop a successful P/CVE campaign:
 <dl class="row">
   <dt class="col-sm-3">Concept development</dt>
@@ -64,9 +62,9 @@ The following sections outline the steps to develop a successful P/CVE campaign:
   </dd>
 </dl> 
     Multiple-choice questions and activities are provided throughout each section to help you apply the concepts to your campaigns. 
-
+    <br/><br/>
     This e-manual also concludes with a list of resources, including a glossary, case studies, social media platform descriptions, and helpful references to assist practitioners in their P/CVE efforts.
-    <br/>
+    <br/><br/>
     By following the guidance and recommendations provided in this e-manual, community practitioners will be better equipped to create impactful social media campaigns that challenge extremist narratives and promote peace and tolerance.
       </p>
     </div>
@@ -78,7 +76,7 @@ The following sections outline the steps to develop a successful P/CVE campaign:
   <br/>
   
   {%set activateone = []%}
-  {% for i in range(topics|length) %}
+  {% for i in range(topics|length-1) %}
 
   <div class="row justify-content-left">
     <div class="col-sm-8 col-md-6 col-lg-6 mx-auto">
@@ -109,5 +107,24 @@ The following sections outline the steps to develop a successful P/CVE campaign:
     </div>
   </div>
   {% endfor %}
+  
+  <div class="row justify-content-left">
+    <div class="col-sm-8 col-md-6 col-lg-6 mx-auto">
+      {% if idx % 39270 == 0 %}
+      <a href = "/static/files/Appendices.pdf" target=”_blank” class="h4">
+        <button type="button" class="list-button" style="background-color: rgb(89, 177, 89); color:rgb(255,255,255)">
+          <i class="fa-solid fa-check"></i>
+        </button>
+        {{topics[-1][0]}}
+      </a>
+      </button>
+      {% else %}
+      <button type="button" class="list-button" style="background-color: rgb(26, 26, 26); color:rgb(255,255,255)" disabled>
+        <i class="fa fa-lock"></i>
+      </button>
+      <h4 style="display: inline-block;">{{topics[-1][0]}}</h4>
+      {% endif %}
+    </div>
+  </div>
 </section>
 {% endblock %}
